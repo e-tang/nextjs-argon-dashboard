@@ -4,11 +4,11 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 
-import PageChange from "components/PageChange/PageChange.js";
+import PageChange from "../components/PageChange/PageChange.js";
 
-import "assets/plugins/nucleo/css/nucleo.css";
+import "../assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "assets/scss/nextjs-argon-dashboard.scss";
+import "../assets/scss/nextjs-argon-dashboard.scss";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -70,7 +70,7 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <title>NextJS Argon Dashboard by Creative Tim</title>
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+          {/* <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> */}
         </Head>
         <Layout>
           <Component {...pageProps} />

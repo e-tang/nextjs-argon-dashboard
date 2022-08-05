@@ -6,13 +6,14 @@ const withFonts = require("next-fonts");
 const webpack = require("webpack");
 const path = require("path");
 
-module.exports = withFonts(
+let nextConfig = withFonts(
   withCSS(
     withImages(
-      withSass({
+      withSass(
+        {
         webpack(config, options) {
           config.module.rules.push({
-            test: /\.(eot|ttf|woff|woff2)$/,
+            // test: /\.(eot|ttf|woff|woff2)$/,
             use: {
               loader: "url-loader",
             },
@@ -20,7 +21,22 @@ module.exports = withFonts(
           config.resolve.modules.push(path.resolve("./"));
           return config;
         },
-      })
+        exportTrailingSlash: false,
+      }
+      )
     )
   )
 );
+
+// nextConfig.webpack5 = false;
+nextConfig.webpack = (config, { dev }) => {
+  // config.node = {
+  //   dns: "mock",
+  //   fs: "empty",
+  //   path: true,
+  //   url: false,
+  // };
+  return config;
+}
+
+module.exports = nextConfig;
